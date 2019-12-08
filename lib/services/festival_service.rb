@@ -1,0 +1,3 @@
+class FestivalService
+
+end    
