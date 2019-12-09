@@ -7,12 +7,13 @@ class MainMenu
 
     def self.show
         puts "Make your selection"
-        puts "How would you like to search? 1. By Festivals"
+        puts "1. Artists"
+        puts "2. Festivals"
         choice = gets.chomp
         if choice == "1"
+            ArtistMenu.show
+        elsif choice == "2"
             FestivalMenu.show
         end
-    end
-
-
+    end    
 end    
