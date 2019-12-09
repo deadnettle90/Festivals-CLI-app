@@ -32,4 +32,16 @@ class ArtistMenu
             puts ""
         end        
     end    
+
+    def self.find_artist_by_genre
+        puts "What type of music do ya like?"
+        genre = gets.chomp
+        service = ArtistService.new(Artist)
+        artists = service.find_by_genre(genre)
+        if artists.size > 0
+            artists.each {|artist| puts artist.name}
+        else 
+            puts "Sorry, we don't know that genre yet"    
+        end    
+    end    
 end
