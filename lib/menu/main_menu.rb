@@ -1,4 +1,5 @@
 class MainMenu
+
     def self.init
         puts "Welcome"
         show
@@ -6,6 +7,12 @@ class MainMenu
 
     def self.show
         puts "Make your selection"
+        puts "How would you like to search? 1. By Festivals"
         choice = gets.chomp
-    end    
+        if choice == "1"
+            FestivalMenu.show
+        end
+    end
+
+
 end    
