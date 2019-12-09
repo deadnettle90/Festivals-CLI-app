@@ -6,6 +6,10 @@ class MainMenu
 
     def self.show
         puts "Make your selection"
+        puts "1. Artists"
         choice = gets.chomp
+        if choice == "1"
+            ArtistMenu.show
+        end
     end    
 end    
