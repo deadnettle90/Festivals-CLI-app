@@ -1,28 +1,35 @@
-require 'pp'
+require "tty-prompt"
 
 class ArtistMenu
 
     def self.show
-    puts "What you would like to do?"
-    puts "1. Find artists by name" 
-    puts "2. Find artists by genre"
-    choice = gets.chomp
-        if choice == "1"
+    prompt = TTY::Prompt.new
+    puts ""
+    response = prompt.select("Find artist by".colorize(:cyan), %w(Name Artist Back))
+        puts ""
+        if response == "Name"
             find_artist_by_name
-        elsif choice == "2"
-            find_artist_by_genre   
+        else response == "Back"
+             MainMenu.show
         end   
+    
     end 
 
     def self.find_artist_by_name
-        puts "Okay, whats the name of the artist you would like to find?"
+        puts ""
+        puts "Okay, whats the name of the artist you would like to find?".colorize(:magenta)
+        puts ""
         name = gets.chomp
         service = ArtistService.new(Artist)
         artist = service.find_by_name(name)
         if artist
-            puts "Found artist! name: #{artist.name}"
+            puts ""
+            puts "Found artist! name: #{artist.name}"..colorize(:cyan)
+            puts ""
         else
-            puts "Artist not found"
+            puts ""
+            puts "Artist not found".colorize(:red)
+            puts ""
         end        
     end    
 
